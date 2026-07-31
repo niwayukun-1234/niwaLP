@@ -112,7 +112,7 @@ mark{
     height: 79px;       /* 高さ79px */
 
     background: white;
-    border-radius: 15px;
+    border-radius: 10px;
 
     display: flex;
     justify-content: space-between;
@@ -127,12 +127,12 @@ mark{
 
 .logo img{
 
-    width:170px;
+    width:145px;
 
 }
 
 .logo{
-    width:170px;
+    width:145px;
 }
 
 .header-right{
