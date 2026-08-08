@@ -12,12 +12,12 @@
     <header class="header">
         <img src="images/photos/logo_color.svg" alt="header-logo" class="header-logo">
         <nav class="header-nav">
-            <a href="#">受講成果</a>
-            <a href="#">講座内容</a>
-            <a href="#">受講者の声</a>
-            <a href="#">日時</a>
-            <a href="#">料金</a>
-            <a href="#">よくある質問</a>
+            <a href="#future">受講成果</a>
+            <a href="#curriculum">講座内容</a>
+            <a href="#voice">受講者の声</a>
+            <a href="#date">日時</a>
+            <a href="#price">料金</a>
+            <a href="#faq">よくある質問</a>
         </nav>
         <a href="#form-section" class="header-btn">無料体験/講座に参加 →</a>
     </header>
@@ -39,7 +39,8 @@
         </ul>
     </section>
     <section class="future">
-        <h3 class="future-title">BeEngneerなら<br><span class="future-highlight">初心者からでも自分の技術で稼げる人材</span>になれる</h3>
+        <h3 class="future-title" id="future">BeEngneerなら<br><span class="future-highlight">初心者からでも自分の技術で稼げる人材</span>になれる
+        </h3>
         <div class="future-content">
             <div class="future-text">
                 <div class="future-sub1">AIやIT化がどんどん進む時代。本当に必要なのは<br><span
@@ -69,7 +70,7 @@
         <div class="CTA-btn">無料体験/講座に申し込む 　〉</div>
     </section>
     <section class="reason">
-        <h4 class="reason-title">BeEngneerが選ばれる理由</h4>
+        <h4 class="reason-title">BeEngineerが選ばれる理由</h4>
         <ul class="reason-list">
 
             <li class="reason-card">
@@ -171,7 +172,7 @@
         </ul>
     </section>
     <section class="curriculum">
-        <h7>学習カリキュラム</h7>
+        <h7 id="curriculum">学習カリキュラム</h7>
         <p class="curriculum-sub">実践を重視したカリキュラムにより、将来も役立つスキルと経験を獲得します。</p>
         <div class="curriculum-flow">
 
@@ -275,7 +276,7 @@
         <div class="CTA-btn">無料体験/講座に申し込む 　〉</div>
     </section>
     <section class="voice">
-        <h10>受講者の声</h10>
+        <h10 id="voice">受講者の声</h10>
         <h11>生徒の声</h11>
         <div class="voice-row">
             <ul class="voice-grid">
@@ -316,7 +317,8 @@
                             <h12>中学1年生<br>女子</h12>
                         </header>
                         <p class="voice-text">
-                            Webページを見るときにどんなコードで書かれているのかを考えながら見るようになりました。自分で作ってみたいなと思うようなWebページに、ひと授業ひと授業近づけるところがワクワ</p>
+                            Webページを見るときにどんなコードで書かれているのかを考えながら見るようになりました。自分で作ってみたいなと思うようなWebページに、ひと授業ひと授業近づけるところがワクワクします！
+                        </p>
                     </article>
                 </li>
             </ul>
@@ -368,5 +370,56 @@
             </ul>
         </div>
     </section>
+    <section class="flow">
+        <header class="flow-header">受講までの流れ</header>
+        <ul class="flow-grid">
+            <li class="flow-card">
+                <div class="flow-head">
+                    <span class="flow-num">1</span>
+                    <p class="flow-title">申し込み</p>
+                </div>
+                <img src="images/illustrations/flow_step_1.svg" alt="flow-image" class="flow-image">
+                <p class="flow-content">下記のフォームからご希望の講座・日程を選んで申し込み。</p>
+                <div class="CTA-btn2">無料体験/講座に申し込む</div>
+            </li>
+            <li class="flow-card">
+                <div class="flow-head">
+                    <span class="flow-num">2</span>
+                    <p class="flow-title">事前確認・準備</p>
+                </div>
+                <img src="images/illustrations/flow_step_2.svg" alt="flow-image" class="flow-image">
+                <p class="flow-content">ご希望の校舎より、申込内容の確認連絡が届きます。<br>当日までに質問があれば各校の電話又はメールにてご連絡ください。</p>
+                <div class="flow-ask">問い合わせ先<br><span class="flow-mail">support@be-engineer.tech</span></div>
+            </li>
+            <li class="flow-card">
+                <div class="flow-head">
+                    <span class="flow-num">3</span>
+                    <p class="flow-title">体験会/講座参加</p>
+                </div>
+                <img src="images/illustrations/flow_step_4.svg" alt="flow-image" class="flow-image">
+                <p class="flow-content">手ぶらで参加OKです！<br>プログラミング体験を楽しんでください。</p>
+            </li>
+        </ul>
+    </section>
+    <section class="date">
+        <button class="date-button">
+            <span class="button-free">無料体験</span>
+            <span class="button-course">講座</span>
+        </button>
+        <div class="date-card">
+            <header class="date-title">日時・場所</header>
+            <div class="date-school">
+                <button class="school-tab-active">梅田校</button>
+                <button class="school-tab">京大本校</button>
+                <button class="school-tab">飯田橋校</button>
+                <button class="school-tab">横浜校</button>
+                <button class="school-tab">首里校</button>
+            </div>
 
+            
+        </div>
+    </section>
+    <script src="function.js"></script>
 </body>
+
+</html>

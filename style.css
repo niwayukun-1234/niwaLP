@@ -1,4 +1,8 @@
-html,
+html {
+    scroll-padding-top: 105px;
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -10,7 +14,7 @@ body {
 .header {
     width: 94%;
     height: 10vh;
-    position: absolute;
+    position: fixed;
     background-color: white;
     z-index: 100;
     display: flex;
@@ -970,7 +974,7 @@ mark.blue-text {
 .voice h10 {
     font-size: 48px;
     font-weight: bold;
-    
+
 }
 
 .voice h11 {
@@ -982,7 +986,10 @@ mark.blue-text {
 .voice-row {
     margin: 0 auto;
     overflow: hidden;
+    width: 100%;
+    max-width: 1440px;
 }
+
 .voice-grid {
     display: flex;
     gap: 75px;
@@ -990,8 +997,8 @@ mark.blue-text {
     margin: 0;
     padding: 0;
     flex-wrap: nowrap;
-    transition: transform 0.5s ease;
-    width: max-content; 
+    will-change: transform;
+    width: max-content;
 }
 
 .voice-card {
@@ -1002,8 +1009,11 @@ mark.blue-text {
     width: 400px;
     height: 300px;
     padding: 17px 30px auto 30px;
-    box-shadow: 20px 20px 15px rgba(0, 0, 0, 0.10);
+    box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.3);
     flex-shrink: 0;
+    position: relative;
+    /* ★追加：オーバーレイの基準位置にする */
+    overflow: hidden;
 }
 
 .voice-header {
@@ -1036,10 +1046,134 @@ mark.blue-text {
     margin-top: 10px;
 }
 
-.voice-row:nth-of-type(1) .voice-grid {
-    transform: translateX(400px);
+.voice-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #A9ACAE;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    /* ★ここが滑らかさの本体 */
+    pointer-events: none;
+    z-index: 0;
 }
 
-.voice-row:nth-of-type(2) .voice-grid {
-    transform: translateX(-400px);
+.voice-card--edge::before {
+    opacity: 1;
+}
+
+/* カードの中身（写真・文章）がオーバーレイの下に隠れないよう最前面にする */
+.voice-card>article {
+    position: relative;
+    z-index: 1;
+}
+
+.voice-card--edge .voice-header,
+.voice-card--edge .voice-text {
+    color: #000000;
+    transition: color 0.4s ease;
+}
+
+.voice-card--edge {
+    box-shadow: none;
+    transition: box-shadow 0.4s ease;
+}
+
+.flow {
+    background: linear-gradient(90deg, #F8F8F8 0%, #D4EDFF 100%);
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 50px 195px 135px;
+}
+
+.flow-header {
+    font-weight: bold;
+    font-size: 48px;
+    color: #0D2B6B;
+    margin-bottom: 36px;
+    text-align: center;
+}
+
+.flow-grid {
+    display: flex;
+    justify-content: space-between;
+    /* 子要素を左右に均等配置 */
+    align-items: center;
+    gap: 60px;
+}
+
+
+.flow-card {
+    width: 320px;
+    height: 500px;
+    box-sizing: border-box;
+    border: solid #0D2B6B 3px;
+    background-color: white;
+}
+
+.flow-head {
+    width: 100%;
+    height: 120px;
+    background-color: #0D2B6B;
+
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+    display: flex;
+}
+
+.flow-num {
+    margin: 0;
+    padding: 37px 15px;
+    border-right: 3px solid white;
+}
+
+.flow-title {
+    flex: 1;                   /* 線の右側の空間をすべて使う */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0; 
+}
+
+.flow-image {
+    width: 160px;
+    height: 160px;
+    margin: 10px auto 0;
+    display: block;
+}
+
+.flow-content {
+    text-align: left;
+    font-size: 20px;
+    margin: 7px 15px 0;
+    line-height: 1.1;
+
+}
+
+.flow-ask {
+    margin-left: 20px;
+    font-size: 20px;
+    line-height: 1.0;
+    margin-top: 25px;
+}
+
+.flow-mail {
+    font-weight: bold;
+}
+
+.CTA-btn2 {
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    background: linear-gradient(90deg, #FF6B09 0%, #E5A77E 100%);
+    border-radius: 50px;
+    border: 3px solid white;
+    padding: 3px 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    display: inline-block;
+    margin: 90px 18px 20px;
+    align-items: center;
+
 }
