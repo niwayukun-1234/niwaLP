@@ -1,9 +1,35 @@
+/* ===================================================================
+   ヘッダー：768px以下でのハンバーガーメニュー開閉
+=================================================================== */
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.getElementById('header-hamburger');
+    const nav = document.getElementById('header-nav');
+
+    hamburger.addEventListener('click', () => {
+        const isOpen = hamburger.classList.toggle('is-open');
+        nav.classList.toggle('is-open', isOpen);
+        hamburger.setAttribute('aria-expanded', isOpen);
+    });
+
+    // リンクをクリックしたら閉じる（アンカーリンクなので開いたままだと邪魔になる）
+    nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('is-open');
+            nav.classList.remove('is-open');
+            hamburger.setAttribute('aria-expanded', 'false');
+        });
+    });
+});
+
+/* ===================================================================
+   受講者の声：自動スクロールカルーセル
+=================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
     const TICK_INTERVAL = 6000;
     const MOVE_DURATION = 0.4;
 
     const rows = document.querySelectorAll('.voice-row');
-    const reinitializers = []; // ★追加：bfcache復元時に呼び直す関数を集めておく
+    const reinitializers = []; // bfcache復元時に呼び直す関数を集めておく
 
     rows.forEach((row, rowIndex) => {
         const grid = row.querySelector('.voice-grid');
@@ -65,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // ★追加：初期化（または再初期化）をまとめた関数
+        // 初期化（または再初期化）をまとめた関数
         function init() {
             measure();
             position = direction === 'left' ? centerOffset : centerOffset - setWidth;
@@ -99,11 +125,11 @@ document.addEventListener('DOMContentLoaded', () => {
             updateEdgeStyles();
         });
 
-        // ★追加：この行の再初期化関数を後で呼べるように保存
+        // この行の再初期化関数を後で呼べるように保存
         reinitializers.push(init);
     });
 
-    // ★追加：bfcacheから復元されたときに、位置とサイズを測り直す
+    // bfcacheから復元されたときに、位置とサイズを測り直す
     window.addEventListener('pageshow', (event) => {
         if (event.persisted) {
             reinitializers.forEach(init => init());
@@ -111,6 +137,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+/* ===================================================================
+   日時・料金セクション：無料体験⇔講座の切り替えトグル
+=================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
     const toggleBtn = document.getElementById('toggle-button');
     const colFree = document.getElementById('date-column-free');
@@ -120,13 +149,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     toggleBtn.addEventListener('click', () => {
         const isCourse = toggleBtn.classList.toggle('is-course');
-        colFree.style.display = isCourse ? 'none' : 'flex';
-        colCourse.style.display = isCourse ? 'flex' : 'none';
-        priceFree.style.display = isCourse ? 'none' : 'flex';
-        priceCourse.style.display = isCourse ? 'flex' : 'none';
+        colFree.classList.toggle('is-hidden', isCourse);
+        colCourse.classList.toggle('is-hidden', !isCourse);
+        priceFree.classList.toggle('is-hidden', isCourse);
+        priceCourse.classList.toggle('is-hidden', !isCourse);
     });
 });
 
+/* ===================================================================
+   FAQセクション：アコーディオン開閉
+=================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
     const faqCards = document.querySelectorAll('.faq-card');
 
@@ -137,13 +169,13 @@ document.addEventListener('DOMContentLoaded', () => {
         question.addEventListener('click', () => {
             const isOpen = card.classList.contains('is-open');
 
-            // ★まず全カードを閉じる
+            // まず全カードを閉じる
             faqCards.forEach(otherCard => {
                 otherCard.classList.remove('is-open');
                 otherCard.querySelector('.faq-answer').style.maxHeight = null;
             });
 
-            // ★クリックしたカードが元々閉じてたら、それだけ開く
+            // クリックしたカードが元々閉じてたら、それだけ開く
             if (!isOpen) {
                 card.classList.add('is-open');
                 answer.style.maxHeight = answer.scrollHeight + 'px';
@@ -152,6 +184,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+/* ===================================================================
+   申し込みフォームセクション：無料体験⇔講座タブの切り替え
+=================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
     const formTabFree = document.getElementById('form-tab-free');
     const formTabCourse = document.getElementById('form-tab-course');
@@ -163,8 +198,8 @@ document.addEventListener('DOMContentLoaded', () => {
         formTabFree.classList.add('active');
         formTabCourse.classList.remove('active');
 
-        courseSelectWrap.style.display = 'block';
-        courseFixedWrap.style.display = 'none';
+        courseSelectWrap.classList.remove('is-hidden');
+        courseFixedWrap.classList.add('is-hidden');
         courseSelect.required = true;
     });
 
@@ -172,8 +207,8 @@ document.addEventListener('DOMContentLoaded', () => {
         formTabCourse.classList.add('active');
         formTabFree.classList.remove('active');
 
-        courseSelectWrap.style.display = 'none';
-        courseFixedWrap.style.display = 'block';
+        courseSelectWrap.classList.add('is-hidden');
+        courseFixedWrap.classList.remove('is-hidden');
         courseSelect.required = false;
     });
 });
