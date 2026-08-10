@@ -65,6 +65,7 @@ body {
     width: 100%;
     height: 100vh;
     position: relative;
+    max-height: 100vh;
 }
 
 .fv-backgroundImage {
@@ -77,61 +78,47 @@ body {
 
 .fv-catchCopy {
     top: 20vh;
-    right: 5vh;
+    right: 5%;
     font-size: 64px;
     font-weight: bold;
-    text-shadow:
-        2px 0 0 white,
-        -2px 0 0 white,
-        0 2px 0 white,
-        0 -2px 0 white,
-        2px 2px 0 white,
-        -2px -2px 0 white,
-        2px -2px 0 white,
-        -2px 2px 0 white;
     position: absolute;
+    margin: 0;
+}
+
+/* 裏側：ぼかし+コントラストで画同士を融合させ、外枠だけの白いシルエットを作る */
+.fv-catchCopy--outline {
+    color: #fff;
+    filter: blur(4px) contrast(35);
+    z-index: 0;
+}
+.fv-catchCopy--outline .highlight {
+    background: none;
+    -webkit-text-fill-color: #fff;
+    color: #fff;
+}
+
+/* 表側：本来の文字（黒/グラデーション） */
+.fv-catchCopy:not(.fv-catchCopy--outline) {
+    z-index: 1;
+    -webkit-text-stroke: 0;
 }
 
 .highlight {
-
     background: linear-gradient(90deg, #AA1AE7 0%, #220428 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
-    filter:
-        drop-shadow(3px 0 0 white)
-        /* 右 */
-        drop-shadow(-3px 0 0 white)
-        /* 左 */
-        drop-shadow(0 3px 0 white)
-        /* 下 */
-        drop-shadow(0 -3px 0 white)
-        /* 上 */
-        drop-shadow(2px 2px 0 white)
-        /* 右下 */
-        drop-shadow(-2px -2px 0 white)
-        /* 左上 */
-        drop-shadow(2px -2px 0 white)
-        /* 右上 */
-        drop-shadow(-2px 2px 0 white);
-    text-shadow: none;
+    -webkit-text-stroke: 0;
 }
 
 .fv-detail {
     top: 58vh;
-    left: 20vh;
+    left: 11%;
     font-size: 24px;
     font-weight: bold;
-    text-shadow:
-        1px 0 0 white,
-        -1px 0 0 white,
-        0 1px 0 white,
-        0 -1px 0 white,
-        1px 1px 0 white,
-        -1px -1px 0 white,
-        1px -1px 0 white,
-        -1px 1px 0 white;
+    -webkit-text-stroke: 3px white;
+    paint-order: stroke fill;
     position: absolute;
     line-height: 2.0;
 }
@@ -162,8 +149,8 @@ body {
 }
 
 .worry-head {
-
     font-size: 40px;
+    margin: 0;
 }
 
 .worry-highlight {
@@ -217,12 +204,13 @@ body {
     box-sizing: border-box;
 }
 
+/* h3→h2に変更。元h3の既定余白(上下約19px相当)を打ち消しmargin-topを0、下は元の見た目に合わせて維持 */
 .future-title {
     font-weight: bold;
     color: #0D2B6B;
     text-align: center;
     font-size: 48px;
-    margin-top: 0;
+    margin: 0 0 20px 0;
 }
 
 .future-highlight {
@@ -342,17 +330,18 @@ body {
 
 .reason {
     width: 100%;
-    background-color: #f3f0fa;
+    background: linear-gradient(90deg, #F2EFFF 0%, #E5F9FA 100%);
     padding: 30px 20px;
     box-sizing: border-box;
 }
 
+/* h4→h2に変更。既定余白の違いを吸収するためmarginを明示 */
 .reason-title {
     text-align: center;
     font-size: 48px;
     color: #0D2B6B;
     font-weight: bold;
-    margin-bottom: 60px;
+    margin: 0 0 60px 0;
 }
 
 .reason-list {
@@ -379,10 +368,15 @@ body {
     left: 20px;
     font-size: 96px;
     font-weight: 900;
-    color: #6a1bb2;
+     background: linear-gradient(180deg, #AA1AE7 0%, #220428 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
     line-height: 1;
 }
 
+/* h5→h3に変更。見た目は既存指定のままでOK */
 .reason-head {
     font-size: 36px;
     text-align: center;
@@ -436,7 +430,8 @@ body {
     /* フレックスアイテムのはみ出しを防止 */
 }
 
-.item-text h6 {
+/* h6→h4に変更(セレクタも合わせて変更)。見た目は既存指定のままでOK */
+.item-text h4 {
     margin: 0 0 6px 0;
     font-size: 20px;
     text-align: center;
@@ -522,6 +517,7 @@ body {
     text-align: center;
     box-sizing: border-box;
     overflow: visible;
+    padding-bottom: 40px;
 }
 
 .card03-item img {
@@ -537,8 +533,8 @@ body {
     background-color: #0b2b6b;
     color: white;
     font-weight: bold;
-    font-size: 15px;
-    padding: 12px 5px;
+    font-size: 22px;
+    padding: 18px 5px;
     z-index: 1;
     margin: 0 -4px;
 }
@@ -547,7 +543,7 @@ body {
     background-color: #eef2fb;
     border: 2px solid #0b2b6b;
     border-top: none;
-    font-size: 13px;
+    font-size: 20px;
     padding: 18px 10px;
     color: #111111;
     font-weight: bold;
@@ -556,7 +552,8 @@ body {
     min-height: 50px;
     display: flex;
     align-items: center;
-    justify-content: center
+    justify-content: center;
+    margin-right: 8px;
 }
 
 .card03-title::before {
@@ -583,6 +580,8 @@ body {
     border-color: #051538 transparent transparent transparent;
 }
 
+
+
 /* --- CURRICULUM SECTION --- */
 .curriculum {
     width: 100%;
@@ -591,7 +590,8 @@ body {
     box-sizing: border-box;
 }
 
-.curriculum h7 {
+/* h7→h2に変更(セレクタもクラスに変更)。見た目は既存指定のままでOK */
+.curriculum-title {
     display: block;
     text-align: center;
     font-size: 38px;
@@ -624,24 +624,27 @@ body {
     position: relative;
 }
 
-/* ★修正点3: ブロック同士を繋ぐ縦線を太さ4pxの線に変更 */
-.curriculum-box:not(:last-child)::after {
-    content: "";
-    position: absolute;
-    bottom: -35px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 4px;
-    /* 線幅 */
-    height: 32px;
-    /* 高さ */
-    background-color: #1656b8;
-    z-index: 5;
+.curriculum-connector {
+    width: 60px;
+    height: 36px;
+    background-color: #0D2B6B;
+    /* box2-box3間(デフォルト色) */
+    margin: 0 auto;
+    /* 中央揃え */
 }
 
-.curriculum-box+.curriculum-box {
-    margin-top: 35px;
+.curriculum-connector--first {
+    background-color: #126ac7;
+    /* box1-box2間だけ別の色に */
 }
+
+.connector-spacer {
+    width: 52px;
+    /* fork(24px) + 左右margin(12px+16px)と完全に同じ幅 */
+    flex-shrink: 0;
+}
+
+
 
 .curriculum-header {
     width: 100%;
@@ -689,10 +692,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    writing-mode: vertical-rl;
-    text-orientation: upright;
-    letter-spacing: 2px;
+
     flex-shrink: 0;
+    align-self: stretch;
 }
 
 .badge-light-blue {
@@ -705,13 +707,15 @@ body {
     height: 70px;
 }
 
-/* ★修正点1: 「くの字」分岐線をCSS擬似要素で正確に表現 */
+/* 「＜」の分岐線 */
 .branch-connector-fork {
     width: 25px;
-    height: 90px;
-    margin: 0 10px;
+    margin: 0 16px 0 12px;
     position: relative;
     flex-shrink: 0;
+    height: auto;
+    align-self: stretch;
+    overflow: hidden;
 }
 
 .branch-connector-fork::before {
@@ -723,8 +727,13 @@ body {
     height: 50%;
     border-left: 2px solid #111;
     border-bottom: 2px solid #111;
-    transform: skewX(-25deg);
+    transform: rotate(35deg);
     transform-origin: top left;
+}
+
+.tree-row.row-double {
+    align-items: stretch;
+    /* バッジ・ブラケット・枝の高さを揃える */
 }
 
 .branch-connector-fork::after {
@@ -736,11 +745,11 @@ body {
     height: 50%;
     border-left: 2px solid #111;
     border-top: 2px solid #111;
-    transform: skewX(25deg);
+    transform: rotate(-35deg);
     transform-origin: bottom left;
 }
 
-/* ★修正点2: 「講座」横の直線 */
+/* 「講座」横の直線 */
 .branch-connector-single {
     width: 25px;
     height: 2px;
@@ -763,6 +772,7 @@ body {
     flex: 1;
 }
 
+/* h8→h4に変更。見た目は既存指定のままでOK(pブロックの既定余白を明示的に消す) */
 .branch-label {
     font-weight: bold;
     font-size: 20px;
@@ -771,7 +781,7 @@ body {
     margin: 0;
 }
 
-/* ★テキストと説明文を繋ぐ水平線（自動伸縮） */
+/* テキストと説明文を繋ぐ水平線（自動伸縮） */
 .line-middle {
     flex: 1;
     height: 2px;
@@ -869,12 +879,12 @@ mark.blue-text {
     max-width: 100%;
 }
 
+/* h9→h2に変更。既定余白の違いを吸収するためmarginを明示(0=旧spanの既定値に合わせる) */
 .recommend-title {
     font-weight: bold;
     font-size: 48px;
     text-align: center;
-    margin-bottom: 40px;
-
+    margin: 0 0 40px 0;
 }
 
 .recommend-grid {
@@ -971,14 +981,15 @@ mark.blue-text {
     flex-direction: column;
 }
 
-
-.voice h10 {
+/* h10→h2に変更(セレクタもクラスに変更)。既定余白を明示的に消す */
+.voice .voice-title {
     font-size: 48px;
     font-weight: bold;
-
+    margin: 0;
 }
 
-.voice h11 {
+/* h11→h3に変更(セレクタもクラスに変更)。見た目は既存指定のままでOK */
+.voice .voice-subtitle {
     font-size: 32px;
     margin-bottom: 20px;
     margin-top: 20px;
@@ -1013,7 +1024,7 @@ mark.blue-text {
     box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.3);
     flex-shrink: 0;
     position: relative;
-    /* ★追加：オーバーレイの基準位置にする */
+    /* オーバーレイの基準位置にする */
     overflow: hidden;
 }
 
@@ -1041,6 +1052,18 @@ mark.blue-text {
     margin-bottom: 8px;
 }
 
+/* h12→h5に変更。voice-headerのflexレイアウトを崩さないよう既定余白・フォントサイズをリセット */
+.voice-header .voice-name {
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+.voice-name .voice-grade,
+.voice-name .voice-gender {
+    display: block;
+}
+
 .voice-text {
     margin-left: 20px;
     margin-right: 20px;
@@ -1054,7 +1077,7 @@ mark.blue-text {
     background: #A9ACAE;
     opacity: 0;
     transition: opacity 0.4s ease;
-    /* ★ここが滑らかさの本体 */
+    /* ここが滑らかさの本体 */
     pointer-events: none;
     z-index: 0;
 }
@@ -1101,6 +1124,9 @@ mark.blue-text {
     /* 子要素を左右に均等配置 */
     align-items: center;
     gap: 60px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 
@@ -1292,9 +1318,9 @@ mark.blue-text {
     border: 3px solid #0D2B6B;
     margin-right: 40px;
     width: 280px;
-    /* ★固定幅（今の2列表示の実測値に合わせて調整してな） */
+    /* 固定幅（今の2列表示の実測値に合わせて調整してな） */
     min-height: 420px;
-    /* ★固定高さ（今の見た目に合わせて調整してな） */
+    /* 固定高さ（今の見た目に合わせて調整してな） */
     box-sizing: border-box;
 }
 
@@ -1360,16 +1386,24 @@ mark.blue-text {
     width: 650px;
     position: relative;
     z-index: 10;
+    flex: 1.6;
 }
 
 .info-row {
     display: flex;
     align-items: stretch;
-    /* ★追加：明示的に指定 */
     border-bottom: 1px solid black;
 }
 
 .info-row:last-child {
+    border-bottom: none;
+}
+
+.info-row.no-border {
+    border-bottom: none;
+}
+
+.info-row:nth-child(2) {
     border-bottom: none;
 }
 
@@ -1379,22 +1413,21 @@ mark.blue-text {
     font-weight: bold;
     padding: 6px 14px;
     border-right: none;
-    /* ★削除 */
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    /* ★追加 */
 }
 
-.info-label::after {
+.info-box::before {
     content: "";
     position: absolute;
     top: 0;
-    right: 0;
+    left: 110px;
     width: 1px;
     height: 100%;
     background-color: black;
+    z-index: 1;
 }
 
 .info-value {
@@ -1410,10 +1443,9 @@ mark.blue-text {
     justify-content: center;
     border-bottom: 1px solid black;
     overflow: hidden;
-    /* ★念のため追加 */
     box-sizing: border-box;
-    border-left: 1px solid black;
     z-index: 300;
+    /* border-left: 1px solid black; ← 削除 */
 }
 
 .map-placeholder {
@@ -1422,7 +1454,6 @@ mark.blue-text {
     height: 250px;
     border: 0;
     display: block;
-    /* background-color, padding-left, flex系プロパティは全部削除 */
     border-bottom: 1px solid black;
     padding: 6px;
     background-color: transparent;
@@ -1439,35 +1470,9 @@ mark.blue-text {
     margin-top: 4px;
 }
 
-/* date-box と info-box を横並びで幅バランス取る */
-.date-content {
-    display: flex;
-    gap: 20px;
-    align-items: stretch;
-}
-
-
-.info-box {
-    flex: 1.6;
-    margin-left: 0;
-    /* 元のmargin-left: 45px; はgapと重複するので削除推奨 */
-}
-
-.info-row.no-border {
-    border-bottom: none;
-}
-
-.info-row:nth-child(2) {
-    border-bottom: none;
-}
-
 .button-free,
 .button-course {
     cursor: pointer;
-}
-
-#date-column-course {
-    justify-content: center;
 }
 
 .price-title {
@@ -1528,7 +1533,6 @@ mark.blue-text {
     font-weight: bold;
     box-sizing: border-box;
 
-    /* ★縦方向を下に */
 }
 
 #price-grid-course {
@@ -1644,7 +1648,7 @@ mark.blue-text {
     flex: 1;
     font-family: inherit;
     border: none;
-    padding: 16px 20px;
+    padding: 8px 20px;
     box-sizing: border-box;
     cursor: pointer;
     display: flex;
@@ -1689,9 +1693,9 @@ mark.blue-text {
     padding: 40px 200px 60px;
     box-sizing: border-box;
     border: 3px solid #0D2B6B;
-    /* ★追加 */
     border-top: none;
     margin: 0 auto;
+    border-right: none;
 
 }
 
@@ -1792,14 +1796,12 @@ mark.blue-text {
 }
 
 .footer-label {
-    
     font-size: 16px;
     color: #111111;
 }
 
 .footer-link {
     font-size: 16px;
-    
     color: #111111;
     text-decoration: underline;
     text-underline-offset: 4px;
