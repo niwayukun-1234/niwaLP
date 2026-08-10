@@ -336,6 +336,7 @@ body {
     padding: 10px 0 10px 50px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     display: inline-block;
+    text-decoration: none;
 
 }
 
@@ -1129,11 +1130,12 @@ mark.blue-text {
 }
 
 .flow-title {
-    flex: 1;                   /* 線の右側の空間をすべて使う */
+    flex: 1;
+    /* 線の右側の空間をすべて使う */
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0; 
+    margin: 0;
 }
 
 .flow-image {
@@ -1175,5 +1177,640 @@ mark.blue-text {
     display: inline-block;
     margin: 90px 18px 20px;
     align-items: center;
+    text-decoration: none;
 
+}
+
+.date {
+    max-width: 100%;
+    box-sizing: border-box;
+    background-color: white;
+    padding: 60px 180px 20px;
+    text-align: center;
+}
+
+.date-button {
+    position: relative;
+    border-radius: 50px;
+    background-color: white;
+    border: 5px solid black;
+    font-weight: bold;
+    font-size: 25px;
+    margin-bottom: 30px;
+    display: inline-flex;
+    align-items: center;
+    padding: 3px;
+    z-index: 2;
+    cursor: pointer;
+    overflow: hidden;
+    min-width: 320px
+}
+
+.toggle-slider {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    height: calc(100% - 6px);
+    width: calc(50% - 3px);
+    background-color: #0D2B6B;
+    border-radius: 50px;
+    transition: transform 0.3s ease;
+    z-index: 0;
+}
+
+.date-button.is-course .toggle-slider {
+    transform: translateX(100%);
+}
+
+.button-free,
+.button-course {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    text-align: center;
+    padding: 5px 10px;
+    color: #0D2B6B;
+    transition: color 0.3s ease;
+}
+
+.date-button:not(.is-course) .button-free {
+    color: white;
+}
+
+.date-button.is-course .button-course {
+    color: white;
+}
+
+.date-card {
+    background-color: #D4EDF3;
+    padding: 20px 30px 50px;
+    border-radius: 50px;
+}
+
+.date-title {
+    font-weight: bold;
+    color: #0D2B6B;
+    margin-bottom: 15px;
+    font-size: 40px;
+}
+
+.date-school {
+    display: flex;
+    justify-content: center;
+    gap: 55px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.school-tab {
+    font-size: 24px;
+    background-color: #D9D9D9;
+    border: 5px solid black;
+    width: 120px;
+
+}
+
+.school-tab-active {
+    font-size: 24px;
+    border: 5px solid black;
+    width: 120px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+.date-content {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 20px;
+    text-align: left;
+    align-items: stretch;
+}
+
+.date-box {
+    padding: 25px 10px 40px;
+    background-color: white;
+    border-radius: 20px;
+    border: 3px solid #0D2B6B;
+    margin-right: 40px;
+    width: 280px;
+    /* ★固定幅（今の2列表示の実測値に合わせて調整してな） */
+    min-height: 420px;
+    /* ★固定高さ（今の見た目に合わせて調整してな） */
+    box-sizing: border-box;
+}
+
+.date-box-header {
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+
+}
+
+.date-column {
+    display: flex;
+    gap: 20px;
+}
+
+.date-col-head {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+
+.date-detail {
+    width: 105px;
+    text-align: center;
+
+}
+
+.date-sun {
+    color: red;
+}
+
+.date-list1 {
+    border-right: 1px solid black;
+    padding-right: 5px;
+
+    padding-left: 4px;
+}
+
+.date-list1::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 100%;
+    background-color: black;
+}
+
+.date-list2 {
+    gap: 30px;
+    padding-right: 8px;
+}
+
+.info-box {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border: 3px solid #0D2B6B;
+    border-radius: 20px;
+    margin-left: 60px;
+    width: 650px;
+    position: relative;
+    z-index: 10;
+}
+
+.info-row {
+    display: flex;
+    align-items: stretch;
+    /* ★追加：明示的に指定 */
+    border-bottom: 1px solid black;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    width: 90px;
+    flex-shrink: 0;
+    font-weight: bold;
+    padding: 6px 14px;
+    border-right: none;
+    /* ★削除 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    /* ★追加 */
+}
+
+.info-label::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 100%;
+    background-color: black;
+}
+
+.info-value {
+    flex: 1;
+    padding: 6px;
+    font-size: 14px;
+    line-height: 1.3;
+}
+
+.map-row {
+    padding: 6px;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid black;
+    overflow: hidden;
+    /* ★念のため追加 */
+    box-sizing: border-box;
+    border-left: 1px solid black;
+    z-index: 300;
+}
+
+.map-placeholder {
+    width: 100%;
+    max-width: 400px;
+    height: 250px;
+    border: 0;
+    display: block;
+    /* background-color, padding-left, flex系プロパティは全部削除 */
+    border-bottom: 1px solid black;
+    padding: 6px;
+    background-color: transparent;
+}
+
+.info-tel {
+    color: #0D2B6B;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.info-tel-hours {
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+/* date-box と info-box を横並びで幅バランス取る */
+.date-content {
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
+}
+
+
+.info-box {
+    flex: 1.6;
+    margin-left: 0;
+    /* 元のmargin-left: 45px; はgapと重複するので削除推奨 */
+}
+
+.info-row.no-border {
+    border-bottom: none;
+}
+
+.info-row:nth-child(2) {
+    border-bottom: none;
+}
+
+.button-free,
+.button-course {
+    cursor: pointer;
+}
+
+#date-column-course {
+    justify-content: center;
+}
+
+.price-title {
+    font-weight: bold;
+    font-size: 40px;
+    color: #0D2B6B;
+    text-decoration: none;
+}
+
+#date-column-course {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.date-list-single {
+    text-align: center;
+}
+
+
+#date-column-free {
+    justify-content: center;
+}
+
+.price-grid {
+    display: flex;
+    gap: 100px;
+    text-align: center;
+    justify-content: center;
+}
+
+.price-name {
+    font-size: 24px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.price-box {
+    border: 5px solid #0D2B6B;
+    border-radius: 15px;
+    background-color: white;
+    width: 400px;
+    height: 100px;
+
+
+}
+
+.price-vibe {
+    color: #0D2B6B;
+    font-size: 64px;
+    text-align: center;
+    font-weight: bold;
+
+}
+
+.price-yen {
+    font-size: 32px;
+    font-weight: bold;
+    box-sizing: border-box;
+
+    /* ★縦方向を下に */
+}
+
+#price-grid-course {
+    justify-content: center;
+}
+
+.faq {
+    padding: 40px 240px 60px;
+    background-color: #E8EBF7;
+    text-align: center;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+.faq-title {
+    font-size: 48px;
+    color: #0D2B6B;
+    margin-bottom: 55px;
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+}
+
+.faq-card {
+    background-color: white;
+    box-sizing: border-box;
+
+    text-align: left;
+
+}
+
+.faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background: none;
+    border: none;
+    padding: 10px 30px;
+    box-sizing: border-box;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.faq-q {
+    color: #0D2B6B;
+    font-size: 40px;
+    flex-shrink: 0;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.faq-content {
+    flex: 1;
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: left;
+
+}
+
+.faq-arrow {
+    color: #666;
+    font-size: 24px;
+    font-weight: normal;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.faq-card.is-open .faq-arrow {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.faq-answer-inner {
+    padding: 0 30px 24px 6px;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.7;
+    color: #444;
+    text-align: left;
+}
+
+.form-section {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-title {
+    font-weight: bold;
+    font-size: 40px;
+    color: #111;
+    text-align: center;
+    padding: 30px 0 20px;
+}
+
+.form-tabs {
+    display: flex;
+    max-width: 810px;
+    margin: 0 auto;
+}
+
+.form-tab {
+    flex: 1;
+    font-family: inherit;
+    border: none;
+    padding: 16px 20px;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background-color: #D9D9D9;
+    border-radius: 20px 20px 0 0;
+}
+
+.form-tab.active {
+    background-color: #D4EDF3;
+    border: 3px solid #0D2B6B;
+    border-bottom: none;
+}
+
+.form-tab-label {
+    font-weight: bold;
+    font-size: 20px;
+    color: #888;
+}
+
+.form-tab.active .form-tab-label {
+    color: #111;
+}
+
+.form-tab-sub {
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+    background-color: #999;
+    padding: 6px 16px;
+    border-radius: 6px;
+}
+
+.form-tab.active .form-tab-sub {
+    background-color: #0D2B6B;
+}
+
+.form-body {
+    background-color: #D4EDF3;
+    padding: 40px 200px 60px;
+    box-sizing: border-box;
+    border: 3px solid #0D2B6B;
+    /* ★追加 */
+    border-top: none;
+    margin: 0 auto;
+
+}
+
+.apply-form {
+    max-width: 740px;
+    margin: 0 auto;
+}
+
+.form-group {
+    flex: 1;
+    margin-bottom: 12px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    font-size: 18px;
+    color: #111;
+    margin-bottom: 3px;
+}
+
+.required {
+    color: #e6003c;
+    font-size: 14px;
+    margin-left: 2px;
+}
+
+.form-group input {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #f5f5f5;
+    border: none;
+    border-radius: 4px;
+    padding: 14px 16px;
+    font-size: 16px;
+    font-family: inherit;
+}
+
+.form-group select {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #f5f5f5;
+    border: none;
+    border-radius: 4px;
+    padding: 14px 16px;
+    font-size: 16px;
+    font-family: inherit;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M0 0l6 8 6-8z' fill='%23666'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+}
+
+.form-group input[readonly] {
+    background-color: #e5e5e5;
+    color: #666;
+}
+
+.form-submit {
+    width: 100%;
+    background-color: #e6003c;
+    color: white;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 48px;
+    border: none;
+    padding: 0;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.footer {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 30px 90px 40px;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.footer-logo {
+    margin-bottom: 45px;
+    width: 20%;
+    height: 20%;
+}
+
+.footer-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.footer-label {
+    
+    font-size: 16px;
+    color: #111111;
+}
+
+.footer-link {
+    font-size: 16px;
+    
+    color: #111111;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.footer-link:hover {
+    opacity: 0.6;
+}
+
+.footer-copyright {
+    font-size: 14px;
+    color: #444444;
+    margin-top: 20px;
 }

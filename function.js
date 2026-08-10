@@ -110,3 +110,70 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleBtn = document.getElementById('toggle-button');
+    const colFree = document.getElementById('date-column-free');
+    const colCourse = document.getElementById('date-column-course');
+    const priceFree = document.getElementById('price-grid-free');
+    const priceCourse = document.getElementById('price-grid-course');
+
+    toggleBtn.addEventListener('click', () => {
+        const isCourse = toggleBtn.classList.toggle('is-course');
+        colFree.style.display = isCourse ? 'none' : 'flex';
+        colCourse.style.display = isCourse ? 'flex' : 'none';
+        priceFree.style.display = isCourse ? 'none' : 'flex';
+        priceCourse.style.display = isCourse ? 'flex' : 'none';
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const faqCards = document.querySelectorAll('.faq-card');
+
+    faqCards.forEach(card => {
+        const question = card.querySelector('.faq-question');
+        const answer = card.querySelector('.faq-answer');
+
+        question.addEventListener('click', () => {
+            const isOpen = card.classList.contains('is-open');
+
+            // ★まず全カードを閉じる
+            faqCards.forEach(otherCard => {
+                otherCard.classList.remove('is-open');
+                otherCard.querySelector('.faq-answer').style.maxHeight = null;
+            });
+
+            // ★クリックしたカードが元々閉じてたら、それだけ開く
+            if (!isOpen) {
+                card.classList.add('is-open');
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+            }
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const formTabFree = document.getElementById('form-tab-free');
+    const formTabCourse = document.getElementById('form-tab-course');
+    const courseSelectWrap = document.getElementById('course-select-wrap');
+    const courseFixedWrap = document.getElementById('course-fixed-wrap');
+    const courseSelect = document.getElementById('course-select');
+
+    formTabFree.addEventListener('click', () => {
+        formTabFree.classList.add('active');
+        formTabCourse.classList.remove('active');
+
+        courseSelectWrap.style.display = 'block';
+        courseFixedWrap.style.display = 'none';
+        courseSelect.required = true;
+    });
+
+    formTabCourse.addEventListener('click', () => {
+        formTabCourse.classList.add('active');
+        formTabFree.classList.remove('active');
+
+        courseSelectWrap.style.display = 'none';
+        courseFixedWrap.style.display = 'block';
+        courseSelect.required = false;
+    });
+});

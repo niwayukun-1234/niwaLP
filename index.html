@@ -67,7 +67,7 @@
     <section class="CTA">
         <div class="CTA-title">学生のうちから自分で稼げるエンジニアへ<br>今ここから、未来を変えよう</div>
         <div class="CTA-content">「興味はあるけど、自分でもできるか不安...」「本当に自分に合っているかわからない...」<br>そんな方のために無料体験会も実施しております</div>
-        <div class="CTA-btn">無料体験/講座に申し込む 　〉</div>
+        <a href="#form-section" class="CTA-btn">無料体験/講座に申し込む 　〉</a>
     </section>
     <section class="reason">
         <h4 class="reason-title">BeEngineerが選ばれる理由</h4>
@@ -273,7 +273,7 @@
     <section class="CTA">
         <div class="CTA-title">学生のうちから自分で稼げるエンジニアへ<br>今ここから、未来を変えよう</div>
         <div class="CTA-content">「興味はあるけど、自分でもできるか不安...」「本当に自分に合っているかわからない...」<br>そんな方のために無料体験会も実施しております</div>
-        <div class="CTA-btn">無料体験/講座に申し込む 　〉</div>
+        <a href="#form-section" class="CTA-btn">無料体験/講座に申し込む 　〉</a>
     </section>
     <section class="voice">
         <h10 id="voice">受講者の声</h10>
@@ -380,7 +380,7 @@
                 </div>
                 <img src="images/illustrations/flow_step_1.svg" alt="flow-image" class="flow-image">
                 <p class="flow-content">下記のフォームからご希望の講座・日程を選んで申し込み。</p>
-                <div class="CTA-btn2">無料体験/講座に申し込む</div>
+                <a href="#form-section" class="CTA-btn2">無料体験/講座に申し込む</a>
             </li>
             <li class="flow-card">
                 <div class="flow-head">
@@ -401,8 +401,9 @@
             </li>
         </ul>
     </section>
-    <section class="date">
-        <button class="date-button">
+    <section class="date" id="date">
+        <button class="date-button" id="toggle-button">
+            <span class="toggle-slider"></span>
             <span class="button-free">無料体験</span>
             <span class="button-course">講座</span>
         </button>
@@ -415,10 +416,255 @@
                 <button class="school-tab">横浜校</button>
                 <button class="school-tab">首里校</button>
             </div>
+            <div class="date-content">
+                <div class="date-box">
+                    <div class="date-box-header">日程</div>
+                    <div class="date-column" id="date-column-free">
+                        <div class="date-list1">
+                            <div class="date-col-head">バイブコーディング</div>
+                            <p class="date-detail">7/12 (<span class="date-sun">日</span>)<br>13:00～18:00</p>
+                            <p class="date-detail">7/19 (<span class="date-sun">日</span>)<br>～18:00</p>
+                            <p class="date-detail">7/26 (<span class="date-sun">日</span>)<br>13:00～18:00</p>
+                        </div>
+                        <div class="date-list2">
+                            <div class="date-col-head">webページ開発</div>
+                            <p class="date-detail">7/12 (<span class="date-sun">日</span>)<br>13:00～18:00</p>
+                            <p class="date-detail">7/19 (<span class="date-sun">日</span>)<br>13:00～18:00</p>
+                            <p class="date-detail">7/26 (<span class="date-sun">日</span>)<br>13:00～18:00</p>
+                        </div>
+                    </div>
+                    <div class="date-column" id="date-column-course" style="display:none;">
+                        <div class="date-list-single">
+                            <div class="date-col-head">Python講座</div>
+                            <p class="date-detail">7/13 (<span class="date-sun">月</span>)<br>13:00～18:00</p>
+                            <p class="date-detail">7/20 (<span class="date-sun">月</span>)<br>13:00～18:00</p>
+                            <p class="date-detail">7/27 (<span class="date-sun">月</span>)<br>13:00～18:00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-box">
+                    <div class="info-row">
+                        <div class="info-label">住所</div>
+                        <div class="info-value" id="info-address">〒530-0012<br>大阪府大阪市北区芝田1-4-14 芝田町ビル 5F</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-row no-border">
+                            <div class="info-label">アクセス</div>
+                            <div class="info-value" id="info-access">阪急梅田駅(茶屋町口)より北へ1分 JR大阪駅・地下鉄梅田駅(北口)5番出口北へ3分</div>
+                        </div>
+                    </div>
+                    <div class="info-row map-row">
 
-            
+                        <iframe class="map-placeholder"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1639.974832491676!2d135.49582583880334!3d34.706449493229464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e7a7ab62fe59%3A0xaee4acdee271791b!2z6Iqd55Sw55S644OT44Or!5e0!3m2!1sja!2sjp!4v1786257150920!5m2!1sja!2sjp"
+                            width="450" height="320" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">電話番号</div>
+                        <div class="info-value">
+                            <a href="#" class="info-tel" id="info-tel">06-6292-6355</a>
+                            <div class="info-tel-hours" id="info-tel-hours">電話受付 14:00～20:00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="#price" class="price-title" id="price">講座別料金</a>
+            <div class="price-grid" id="price-grid-free">
+                <div class="price-item">
+                    <div class="price-name">バイブコーディング<br>60分</div>
+                    <div class="price-box"><span id="price-vibe" class="price-vibe">0</span><span
+                            class="price-yen">円</span></div>
+                </div>
+                <div class="price-item">
+                    <div class="price-name">webページ開発<br>60分</div>
+                    <div class="price-box"><span id="price-web" class="price-vibe">0</span><span
+                            class="price-yen">円</span></div>
+                </div>
+            </div>
+            <div class="price-grid" id="price-grid-course" style="display:none;">
+                <div class="price-item">
+                    <div class="price-name">Python講座<br>120分×2コマ×2日間</div>
+                    <div class="price-box"><span class="price-vibe">25,800</span><span class="price-yen">円</span></div>
+                </div>
+            </div>
         </div>
     </section>
+
+    <section class="faq" id="faq">
+        <header class="faq-title">よくある質問</header>
+        <div class="faq-list">
+            <div class="faq-card">
+                <button class="faq-question">
+                    <span class="faq-q">Q</span>
+                    <span class="faq-content">プログラミング未経験でも参加できますか？</span>
+                    <span class="faq-arrow">⌄</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        参加歓迎です。プログラミングの知識がなくとも体験できるイベントを開催しています。
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-card">
+                <button class="faq-question">
+                    <span class="faq-q">Q</span>
+                    <span class="faq-content">PCを持ってないのですが参加できますか？</span>
+                    <span class="faq-arrow">⌄</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        PCはこちらで無料貸出を行っております。安心してご参加ください。
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-card">
+                <button class="faq-question">
+                    <span class="faq-q">Q</span>
+                    <span class="faq-content">何歳から参加できますか？</span>
+                    <span class="faq-arrow">⌄</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        中学1年生〜高校3年生までのお子様を対象とした無料体験、講座となります。
+                        それ以外のお子様は参加ができません。
+                        ご容赦のほどお願いいたします
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-card">
+                <button class="faq-question">
+                    <span class="faq-q">Q</span>
+                    <span class="faq-content">参加後のサポートはありますか？</span>
+                    <span class="faq-arrow">⌄</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        体験後、ご希望の方にはサポートを行なっております。
+                        夏の基礎講座・発展講座に参加したい、BeEngineerへの入会を考えている等、気になることがありましたらお気軽に相談ください。
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-card">
+                <button class="faq-question">
+                    <span class="faq-q">Q</span>
+                    <span class="faq-content">キャンセルはできますか？？</span>
+                    <span class="faq-arrow">⌄</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        可能です。
+                        キャンセルをご希望の場合、無料体験または各講座の参加予定日の3日前までに下記メールアドレスまでキャンセルのご連絡をお願いいたします。
+                        宛先：support@be-engineer.tech
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="form-section" id="form-section">
+        <header class="form-title">申し込みフォーム</header>
+        <div class="form-tabs">
+            <button class="form-tab active" data-target="free" id="form-tab-free">
+                <span class="form-tab-label">無料体験</span>
+                <span class="form-tab-sub">気軽に試してみたい方はこちら</span>
+            </button>
+            <button class="form-tab" data-target="course" id="form-tab-course">
+                <span class="form-tab-label">講座</span>
+                <span class="form-tab-sub">今すぐ学びたい方はこちら</span>
+            </button>
+        </div>
+
+        <div class="form-body">
+            <form class="apply-form">
+                <div class="form-group">
+                    <label>お名前<span class="required">*</span></label>
+                    <input type="text" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label>お名前(ふりがな)<span class="required">*</span></label>
+                    <input type="text" name="furigana" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>学年<span class="required">*</span></label>
+                        <select name="grade" required>
+                            <option value="">選択してください</option>
+                            <option value="中学1年生">中学1年生</option>
+                            <option value="中学2年生">中学2年生</option>
+                            <option value="中学3年生">中学3年生</option>
+                            <option value="高校1年生">高校1年生</option>
+                            <option value="高校2年生">高校2年生</option>
+                            <option value="高校3年生">高校3年生</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>学校名<span class="required">*</span></label>
+                        <input type="text" name="school" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>開催場所<span class="required">*</span></label>
+                    <select name="venue" required>
+                        <option value="">選択してください</option>
+                        <option value="梅田校">梅田校</option>
+                        <option value="京大本校">京大本校</option>
+                        <option value="飯田橋校">飯田橋校</option>
+                        <option value="横浜校">横浜校</option>
+                        <option value="首里校">首里校</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="course-select-wrap">
+                    <label>講座名<span class="required">*</span></label>
+                    <select name="course" id="course-select" required>
+                        <option value="">選択してください</option>
+                        <option value="バイブコーディング">バイブコーディング</option>
+                        <option value="webページ開発">webページ開発</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="course-fixed-wrap" style="display:none;">
+                    <label>講座名<span class="required">*</span></label>
+                    <input type="text" name="course_fixed" value="Python講座" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label>メールアドレス<span class="required">*</span></label>
+                    <input type="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label>電話番号<span class="required">*</span></label>
+                    <input type="tel" name="tel" required>
+                </div>
+
+                <button type="submit" class="form-submit">→申し込む</button>
+            </form>
+        </div>
+    </section>
+    <footer class="footer">
+        <img src="images/photos/logo_color.svg" alt="footer-logo" class="footer-logo">
+        <div class="footer-row footer-row-company">
+            <span class="footer-label">運営会社</span>
+            <a href="#" class="footer-link">株式会社DeMiA</a>
+            <a href="#" class="footer-link">株式会社ワオ・コーポレーション</a>
+        </div>
+
+        <div class="footer-row footer-row-legal">
+            <a href="#" class="footer-link">特定商取引法に基づく表記</a>
+            <a href="#" class="footer-link">サービス利用規約</a>
+            <a href="#" class="footer-link">プライバシーポリシー</a>
+        </div>
+
+        <p class="footer-copyright">Copyright BeEngineer</p>
+    </footer>
     <script src="function.js"></script>
 </body>
 
