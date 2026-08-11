@@ -7,8 +7,7 @@ html {
 }
 
 body {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
@@ -61,7 +60,7 @@ body {
     margin-left: 16px;
     border-radius: 50px;
     background-color: #ff0000;
-    font-size: 30px
+    font-size: 30px;
     font-weight: bold;
     color: white;
     text-decoration: none;
@@ -149,15 +148,16 @@ body {
 .FirstView {
     position: relative;
     width: 100%;
-    height: 100vh;
-    max-height: 100vh;
+   
+    
 }
 
 .fv-backgroundImage {
-    position: absolute;
+    position: relative;
     width: 100%;
-    
+    height: auto;
     object-position: center;
+    display: block;
 }
 
 .fv-catchCopy {
@@ -225,8 +225,8 @@ body {
 =================================================================== */
 .worry {
     width: 100%;
-    height: 78vh;
-    padding: 40px 10px 125px;
+    
+    padding: 40px 0 5%;
     box-sizing: border-box;
     clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
     background: linear-gradient(180deg, #595959 0%, #222020 100%);
@@ -310,7 +310,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 970px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
@@ -355,8 +355,8 @@ body {
 }
 
 .future-card-item img {
-    width: 147px;
-    height: 84px;
+    width: clamp(7.5rem, 5.375rem + 3.33vw, 9.375rem);
+    height: clamp(4.688rem, 3.271rem + 2.22vw, 5.938rem);
 }
 
 .future-card {
@@ -375,7 +375,7 @@ body {
 =================================================================== */
 .CTA {
     width: 100%;
-    height: 40vh;
+    
     padding: 2% 25%;
     box-sizing: border-box;
     background: linear-gradient(90deg, #3712A8 0%, #7648AE 50%);
@@ -388,6 +388,7 @@ body {
     font-weight: bold;
     color: white;
     text-align: center;
+    white-space: nowrap;
 }
 
 .CTA-content {
@@ -401,7 +402,7 @@ body {
 .CTA-btn {
     display: inline-block;
     padding: 10px 0 10px 50px;
-    margin-bottom: 40px;
+    
     border: 3px solid white;
     border-radius: 50px;
     background: linear-gradient(90deg, #FF6B09 0%, #E5A77E 100%);
@@ -451,7 +452,7 @@ body {
     position: absolute;
     top: -45px;
     left: 20px;
-    background: linear-gradient(180deg, #AA1AE7 0%, #220428 100%);
+    background: #AA1AE7; 
     background-clip: text;
     -webkit-background-clip: text;
     line-height: 1;
@@ -468,7 +469,7 @@ body {
     font-weight: bold;
     color: #111;
     text-align: center;
-    white-space: nowrap;
+    
 }
 
 .reason-purple {
@@ -535,7 +536,7 @@ body {
 
 .reason-lead.center {
     text-align: center;
-    white-space: nowrap;
+    
 }
 
 .card02-content {
@@ -852,8 +853,8 @@ body {
 }
 
 .branch-desc {
-    flex-shrink: 0;
-    width: 380px;
+    
+    width: 60%;
     padding: 10px 14px;
     margin: 0;
     border: 1.5px solid #111111;
@@ -1247,7 +1248,7 @@ mark.blue-text {
 =================================================================== */
 .date {
     max-width: 100%;
-    padding: 60px 180px 20px;
+    padding: 60px 10vw 20px;
     box-sizing: border-box;
     background-color: white;
     text-align: center;
@@ -1541,7 +1542,7 @@ mark.blue-text {
 }
 
 .price-box {
-    width: 400px;
+    width: 27vw;
     height: 100px;
     border: 5px solid #0D2B6B;
     border-radius: 15px;

@@ -157,6 +157,53 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ===================================================================
+   日時・場所セクション：校舎タブの切り替え
+=================================================================== */
+document.addEventListener('DOMContentLoaded', () => {
+    const schoolData = {
+        umeda: {
+            address: '〒530-0012<br>大阪府大阪市北区芝田1-4-14 芝田町ビル 5F',
+            access: '阪急梅田駅(茶屋町口)より北へ1分 JR大阪駅・地下鉄梅田駅(北口)5番出口北へ3分',
+            tel: '06-6292-6355',
+            telHours: '電話受付 14:00～20:00',
+            map: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1639.974832491676!2d135.49582583880334!3d34.706449493229464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e7a7ab62fe59%3A0xaee4acdee271791b!2z6Iqd55Sw55S644OT44Or!5e0!3m2!1sja!2sjp!4v1786257150920!5m2!1sja!2sjp'
+        },
+        kyodai: {
+            address: '〒606-8301<br>京都府京都市左京区吉田泉殿町1-34 ダイショウ百万遍ビル1・2F',
+            access: '出町柳駅から徒歩10分（駐輪場あり）',
+            tel: '06-6292-6355',
+            telHours: '電話受付 14:00～20:00',
+            map: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3267.133093239203!2d135.77629267603183!3d35.02840017280505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x600109007c1420c5%3A0x9b5f1a14c8480988!2z44OA44Kk44K344On44Km55m-5LiH6YGN44OT44Or!5e0!3m2!1sja!2sjp!4v1786428293762!5m2!1sja!2sjp'
+        }
+    };
+
+    const schoolTabs = document.querySelectorAll('.date-school button');
+    const infoAddress = document.getElementById('info-address');
+    const infoAccess = document.getElementById('info-access');
+    const infoTel = document.getElementById('info-tel');
+    const infoTelHours = document.getElementById('info-tel-hours');
+    const mapIframe = document.getElementById('map-iframe');
+
+    schoolTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const key = tab.dataset.school;
+            const data = schoolData[key];
+            if (!data) return;
+
+            schoolTabs.forEach(t => t.classList.remove('school-tab-active'));
+            schoolTabs.forEach(t => t.classList.add('school-tab'));
+            tab.classList.remove('school-tab');
+            tab.classList.add('school-tab-active');
+
+            infoAddress.innerHTML = data.address;
+            infoAccess.textContent = data.access;
+            infoTel.textContent = data.tel;
+            infoTelHours.textContent = data.telHours;
+            mapIframe.src = data.map;
+        });
+    });
+});
+/* ===================================================================
    FAQセクション：アコーディオン開閉
 =================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
