@@ -64,6 +64,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const originalBlockWidth = setWidth - gap;
             const rowWidth = row.clientWidth;
             centerOffset = (rowWidth - originalBlockWidth) / 2;
+
+            // スマホ幅（カード2枚分未満）では、カードの間ではなくカード1枚が真ん中に来るようにずらす
+            if (rowWidth < step * 2 && originalCards.length % 2 === 0) {
+                centerOffset += step / 2;
+            }
         }
 
         function updateEdgeStyles() {

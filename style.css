@@ -144,6 +144,7 @@ body {
 
 /* ===================================================================
    ファーストビュー
+   文字の位置は写真（横幅に比例）に合わせて vw で指定（1920×1080 の見た目が基準）
 =================================================================== */
 .FirstView {
     position: relative;
@@ -162,7 +163,7 @@ body {
 
 .fv-catchCopy {
     position: absolute;
-    top: 20vh;
+    top: 11.25vw;
     right: 5%;
     margin: 0;
     font-size: clamp(2rem, 1.3rem + 3vw, 4rem);
@@ -197,7 +198,8 @@ body {
 
 .fv-detail {
     position: absolute;
-    top: 58vh;
+    /* ボタン（下端 6.75vw＋ボタンの高さ）のすぐ上に置き、画面サイズが変わっても重ならないようにする */
+    bottom: calc(6.75vw + 1.4 * clamp(1.125rem, 0.73rem + 1.69vw, 2.25rem) + 2 * clamp(0.625rem, 0.4rem + 0.94vw, 1.25rem) + 1.5vw);
     left: 11%;
     margin: 0;
     font-size: clamp(1rem, 0.82rem + 0.75vw, 1.5rem);
@@ -209,7 +211,7 @@ body {
 
 .fv-btn {
     position: absolute;
-    bottom: 12vh;
+    bottom: 6.75vw;
     left: 11%;
     padding: clamp(0.625rem, 0.4rem + 0.94vw, 1.25rem);
     border-radius: 50px;
@@ -1896,5 +1898,763 @@ mark.blue-text {
         width: 100%;
         max-width: 320px;
         height: auto;
+    }
+}
+
+/* ===================================================================
+   レスポンシブ対応（1024px以下）
+   左右の大きな固定余白を詰める
+=================================================================== */
+@media (max-width: 1024px) {
+    .future {
+        padding: 20px 40px;
+    }
+
+    .future-content {
+        gap: 30px;
+    }
+
+    .CTA {
+        padding: 32px 40px;
+    }
+
+    .flow {
+        padding: 50px 40px 80px;
+    }
+
+    .price-grid {
+        gap: 40px;
+    }
+
+    .faq {
+        padding: 40px 40px 60px;
+    }
+
+    .form-body {
+        padding: 40px 40px 60px;
+    }
+
+    .footer {
+        padding: 30px 40px 40px;
+    }
+
+    .footer-row {
+        gap: 16px 40px;
+    }
+
+    .card03-title {
+        font-size: 18px;
+    }
+
+    .card03-desc {
+        font-size: 16px;
+    }
+}
+
+/* ===================================================================
+   レスポンシブ対応（768px以下：スマホ）
+   横並びを縦積みにし、文字・余白をスマホ向けに縮める
+=================================================================== */
+@media (max-width: 768px) {
+    html {
+        scroll-padding-top: 84px;
+    }
+
+    /* ヘッダー */
+    .header {
+        top: 12px;
+        left: 12px;
+        width: calc(100% - 24px);
+        height: 60px;
+        padding: 8px 12px;
+    }
+
+    .header-logo {
+        width: auto;
+        height: 36px;
+        margin: 0 auto 0 4px;
+    }
+
+    .header-nav {
+        top: 80px;
+        left: 12px;
+        width: calc(100% - 24px);
+    }
+
+    .header-nav a {
+        font-size: 16px;
+    }
+
+    .header-btn {
+        padding: 6px 10px;
+        margin: 0 8px 0 0;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+
+    /* 悩みセクション */
+    .worry {
+        padding: 32px 16px 64px;
+        clip-path: polygon(0 0, 100% 0, 100% 94%, 50% 100%, 0 94%);
+    }
+
+    .worry-head {
+        font-size: 22px;
+        line-height: 1.6;
+    }
+
+    .worry-box {
+        padding: 0 6px;
+        margin-right: 4px;
+    }
+
+    .worry-list {
+        display: block;
+        margin: 24px 0 0;
+        font-size: 16px;
+    }
+
+    .worry-list li {
+        padding-left: 36px;
+        margin-bottom: 20px;
+    }
+
+    .worry-list li::before {
+        top: -4px;
+        font-size: 24px;
+    }
+
+    /* 受講成果セクション */
+    .future {
+        padding: 32px 16px;
+    }
+
+    .future-title {
+        font-size: 24px;
+        line-height: 1.6;
+    }
+
+    .future-highlight {
+        border-bottom-width: 4px;
+    }
+
+    .future-content {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 24px;
+    }
+
+    .future-sub1 {
+        margin: 0 0 20px 0;
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+    .future-sub2 {
+        margin: 0;
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+    .future-sub-highlight {
+        display: inline;
+        padding: 2px 4px;
+        margin: 0;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+    }
+
+    .future-cardset {
+        max-width: none;
+        margin-top: 0;
+        gap: 12px;
+    }
+
+    .future-card-item {
+        font-size: 15px;
+    }
+
+    .future-card-item img {
+        width: 110px;
+        height: 72px;
+        object-fit: cover;
+    }
+
+    /* CTAセクション */
+    .CTA {
+        padding: 40px 16px;
+    }
+
+    .CTA-title {
+        margin: 0 0 20px 0;
+        font-size: 18px;
+        white-space: normal;
+    }
+
+    .CTA-content {
+        margin: 0 0 24px 0;
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    .CTA-btn {
+        padding: 12px 20px 12px 28px;
+        font-size: 18px;
+    }
+
+    /* 選ばれる理由セクション */
+    .reason {
+        padding: 32px 12px;
+    }
+
+    .reason-title {
+        margin: 0 0 50px 0;
+        font-size: 26px;
+    }
+
+    .reason-card {
+        padding: 36px 16px 8px;
+        margin-bottom: 56px;
+    }
+
+    .reason-num {
+        top: -32px;
+        left: 12px;
+        font-size: 64px;
+    }
+
+    .reason-head {
+        margin: 10px 0 20px;
+        font-size: 20px;
+        line-height: 1.5;
+    }
+
+    .reason-item {
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 28px;
+    }
+
+    .circle-img {
+        width: 100px;
+        height: 100px;
+        margin-right: 0;
+    }
+
+    .item-text h4 {
+        font-size: 17px;
+        line-height: 1.5;
+    }
+
+    .item-text p {
+        font-size: 14px;
+    }
+
+    .reason-lead {
+        font-size: 15px;
+        text-align: left;
+    }
+
+    .reason-lead br,
+    .merit-list br {
+        display: none;
+    }
+
+    .merit-head {
+        font-size: 18px;
+    }
+
+    .merit-list li {
+        display: block;
+        font-size: 14px;
+    }
+
+    .card03-grid {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .card03-item {
+        padding-bottom: 0;
+    }
+
+    .card03-title {
+        font-size: 18px;
+    }
+
+    .card03-desc {
+        font-size: 16px;
+    }
+
+    /* カリキュラムセクション：ツリーを縦積みに */
+    .curriculum {
+        padding: 40px 12px;
+    }
+
+    .curriculum-title {
+        font-size: 26px;
+    }
+
+    .curriculum-sub {
+        margin-bottom: 24px;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .curriculum-header {
+        font-size: 20px;
+    }
+
+    .curriculum-body {
+        padding: 16px;
+    }
+
+    .tree-row,
+    .tree-row.row-double {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .badge,
+    .badge-light-blue,
+    .badge-dark-blue {
+        width: 100%;
+        height: auto;
+        padding: 8px 0;
+        font-size: 17px;
+    }
+
+    .branch-connector-fork,
+    .connector-spacer,
+    .line-middle {
+        display: none;
+    }
+
+    .branch-item,
+    .tree-branch-single {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+    }
+
+    .branch-label {
+        font-size: 17px;
+        white-space: normal;
+    }
+
+    .branch-desc {
+        width: auto;
+        font-size: 14px;
+    }
+
+    .curriculum-points {
+        font-size: 15px;
+        line-height: 1.9;
+    }
+
+    .presentation-desc {
+        padding: 0;
+        font-size: 15px;
+    }
+
+    .curriculum-img-right {
+        max-width: 100%;
+    }
+
+    /* こんな人におすすめセクション：2列に */
+    .recommend {
+        padding: 40px 16px;
+    }
+
+    .recommend-title {
+        margin: 0 0 24px 0;
+        font-size: 26px;
+    }
+
+    .recommend-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .recommend-card,
+    .recommend-card-bottom1,
+    .recommend-card-bottom2 {
+        grid-column: auto;
+        padding: 16px 8px;
+        margin-top: 0;
+    }
+
+    .recommend-card-bottom2 {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: calc(50% - 6px);
+    }
+
+    .card-icon {
+        width: 72px;
+        height: 72px;
+    }
+
+    .card-text {
+        font-size: 14px;
+    }
+
+    /* 受講者の声セクション：カードを小さく */
+    .voice {
+        padding: 40px 0 60px;
+    }
+
+    .voice .voice-title {
+        font-size: 26px;
+    }
+
+    .voice .voice-subtitle {
+        font-size: 20px;
+    }
+
+    .voice-grid {
+        gap: 16px;
+    }
+
+    .voice-card {
+        width: 280px;
+        height: auto;
+        min-height: 280px;
+    }
+
+    .voice-card:not(.voice-card--edge) {
+        box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .voice-header {
+        margin: 0 16px 16px;
+        font-size: 16px;
+    }
+
+    .avator {
+        width: 56px;
+        height: 56px;
+        margin-top: 14px;
+    }
+
+    .voice-text {
+        margin: 0 16px 16px;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    /* 受講までの流れセクション */
+    .flow {
+        padding: 40px 16px 60px;
+    }
+
+    .flow-header {
+        margin-bottom: 24px;
+        font-size: 26px;
+    }
+
+    .flow-grid {
+        gap: 24px;
+    }
+
+    .flow-card {
+        max-width: 360px;
+        padding-bottom: 20px;
+    }
+
+    .flow-head {
+        height: 64px;
+        font-size: 22px;
+    }
+
+    .flow-num {
+        display: flex;
+        align-items: center;
+        padding: 0 16px;
+    }
+
+    .flow-image {
+        width: 120px;
+        height: 120px;
+    }
+
+    .flow-content {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .flow-ask {
+        margin: 16px 15px 0;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .CTA-btn2 {
+        display: table;
+        margin: 20px auto 0;
+        padding: 8px 20px;
+        font-size: 16px;
+    }
+
+    /* 日時・料金セクション */
+    .date {
+        padding: 40px 12px 20px;
+    }
+
+    .date-button {
+        min-width: 260px;
+        font-size: 20px;
+    }
+
+    .date-card {
+        padding: 20px 12px 32px;
+        border-radius: 24px;
+    }
+
+    .date-title {
+        font-size: 26px;
+    }
+
+    .date-school {
+        gap: 8px;
+    }
+
+    .school-tab,
+    .school-tab-active {
+        width: auto;
+        padding: 4px 10px;
+        border-width: 3px;
+        font-size: 16px;
+    }
+
+    .school-tab-active {
+        box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4);
+    }
+
+    .date-box {
+        min-height: 0;
+        padding: 20px 8px 24px;
+    }
+
+    .date-column {
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .date-detail {
+        width: auto;
+    }
+
+    .info-box {
+        flex: none;
+    }
+
+    .map-row {
+        position: relative;
+        z-index: 2;
+        background-color: white;
+    }
+
+    .map-row .info-label {
+        display: none;
+    }
+
+    .price-title {
+        display: block;
+        margin: 24px 0 12px;
+        font-size: 26px;
+    }
+
+    .price-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .price-item {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .price-name {
+        font-size: 18px;
+    }
+
+    .price-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 80px;
+        box-sizing: border-box;
+    }
+
+    .price-vibe {
+        font-size: 48px;
+    }
+
+    .price-yen {
+        font-size: 24px;
+    }
+
+    /* FAQセクション */
+    .faq {
+        padding: 40px 12px;
+    }
+
+    .faq-title {
+        margin-bottom: 24px;
+        font-size: 26px;
+    }
+
+    .faq-list {
+        gap: 12px;
+    }
+
+    .faq-question {
+        gap: 10px;
+        padding: 10px 12px;
+    }
+
+    .faq-q {
+        margin-right: 0;
+        font-size: 28px;
+    }
+
+    .faq-content {
+        font-size: 16px;
+    }
+
+    .faq-arrow {
+        font-size: 18px;
+    }
+
+    .faq-answer-inner {
+        padding: 0 16px 16px;
+        font-size: 14px;
+    }
+
+    /* 申し込みフォームセクション */
+    .form-title {
+        padding: 24px 0 16px;
+        font-size: 26px;
+    }
+
+    .form-tabs {
+        margin: 0 12px;
+    }
+
+    .form-tab {
+        gap: 6px;
+        padding: 8px 6px;
+    }
+
+    .form-tab-label {
+        font-size: 16px;
+    }
+
+    .form-tab-sub {
+        padding: 4px 6px;
+        font-size: 10px;
+        white-space: nowrap;
+    }
+
+    .form-body {
+        padding: 24px 16px 40px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .form-group label {
+        font-size: 15px;
+    }
+
+    .form-submit {
+        padding: 10px 0;
+        font-size: 28px;
+    }
+
+    /* フッター */
+    .footer {
+        padding: 30px 16px 40px;
+    }
+
+    .footer-logo {
+        width: 40%;
+        height: auto;
+        margin-bottom: 24px;
+    }
+
+    .footer-row {
+        gap: 12px 24px;
+    }
+
+    .footer-label,
+    .footer-link {
+        font-size: 14px;
+    }
+}
+
+/* ===================================================================
+   レスポンシブ対応（スマホ・縦向きタブレット）
+   ファーストビュー：画面いっぱいの写真の下側に文字を重ねる
+=================================================================== */
+@media (max-width: 768px), (max-width: 1024px) and (orientation: portrait) {
+    .FirstView {
+        height: 100vh;
+        height: 100svh;
+        min-height: 560px;
+        overflow: hidden;
+    }
+
+    .FirstView::after {
+        content: "";
+        position: absolute;
+        inset: 45% 0 0 0;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.75) 60%);
+        pointer-events: none;
+    }
+
+    .fv-backgroundImage {
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .fv-catchCopy {
+        top: auto;
+        right: auto;
+        bottom: calc(6svh + 190px);
+        left: 6%;
+        font-size: 34px;
+        line-height: 1.3;
+    }
+
+    .fv-catchCopy--outline {
+        z-index: 1;
+    }
+
+    .fv-catchCopy:not(.fv-catchCopy--outline) {
+        z-index: 2;
+    }
+
+    .fv-detail {
+        z-index: 2;
+        top: auto;
+        bottom: calc(6svh + 70px);
+        left: 6%;
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+    .fv-btn {
+        z-index: 2;
+        bottom: 6svh;
+        left: 6%;
+        padding: 12px 20px;
+        font-size: 18px;
     }
 }
